@@ -1,5 +1,10 @@
 vim.g.mapleader = " "
 
+-- Отключает подсветку поиска
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+-- Открывает буфер
+-- vim.keymap.set('n', '"', ":reg<CR>")
+
 -- NeoTree
 vim.keymap.set('n', '<leader>E', ':Neotree float reveal<CR>')
 vim.keymap.set('n', '<leader>e', ':Neotree left reveal<CR>')

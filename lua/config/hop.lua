@@ -1,0 +1,10 @@
+local hop = require('hop')
+local directions = require('hop.hint').HintDirection
+vim.keymap.set('', '<leader>s', function()
+  hop.hint_anywhere({ direction = directions.AFTER_CURSOR, current_line_only = false })
+end, {remap=true})
+vim.keymap.set('', '<leader><leader>', function()
+  hop.hint_words({ direction = directions.AFTER_CURSOR, current_line_only = false })
+end, {remap=true})
+
+require('hop').setup({})

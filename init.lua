@@ -9,4 +9,7 @@ require("config.cmp")
 require("config.kanagawa")
 require("config.treesitter")
 require("config.telescope")
+require("config.bufferline")
+require("config.hop")
+
 -- vim.opt.guifont = "Hasklug Nerd Font Propo:h18"

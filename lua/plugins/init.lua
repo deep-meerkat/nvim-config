@@ -82,4 +82,8 @@ return {
 -- or                              , branch = '0.1.x',
       dependencies = { 'nvim-lua/plenary.nvim' }
   },
+-- Bufferline (top navbar)
+  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+-- Hop (unmaintained)
+  { 'phaazon/hop.nvim' }
 }
