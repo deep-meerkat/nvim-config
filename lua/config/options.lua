@@ -13,7 +13,9 @@ vim.g.formatoptions = "qrn1"
 -- Отключает отображения режима ввода внизу экрана
 vim.opt.showmode = false
 -- Интервал обновления экрана в миллисекундах
--- vim.opt.updatetime = 40
+vim.opt.updatetime = 50
+-- Макс. интвервал, в течение которого можно нажать комбинацию клавиш <leader>+...
+vim.opt.timeoutlen = 300
 -- Всегда показывает колонку для отображения значков слева
 vim.wo.signcolumn = "yes"
 -- Устанавливает минимальное количество строк
@@ -47,7 +49,6 @@ vim.opt.splitright = true
 
 -- Clipboard
 -- Позволяет использовать системный буфер обмена
---
 vim.opt.clipboard = "unnamedplus"
 
 -- Shorter messages
@@ -100,6 +101,8 @@ vim.opt.wildmenu = true
 
 -- Подсвечивает все совпадения при поиске
 vim.opt.hlsearch = true
+-- Отключает подсветку при поиске на Esc
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Игнорирует регистр при поиске
 vim.opt.ignorecase = true
 -- Учитывает регистр при поиске, если в запросе есть заглавная буква
@@ -111,3 +114,20 @@ vim.cmd([[highlight clear SignColumn]])
 
 -- Установка шрифтов
 -- vim.opt.guifont = "Hasklug Nerd Font Propo:h18"
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+--vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+--vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Подсветка при копировании
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking text",
+    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
+
