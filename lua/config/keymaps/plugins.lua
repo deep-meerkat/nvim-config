@@ -23,6 +23,7 @@ vim.keymap.set('n', '<leader>fr', builtin.resume,       { desc = '[F]ind [R]esum
 vim.keymap.set('n', '<leader>fk', builtin.keymaps,      { desc = '[F]ind [K]eymaps' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags,    { desc = '[F]ind [R]esume' })
 
+-- BufferLine
 vim.keymap.set('n', '<leader>1', ':BufferLineGoToBuffer 1<CR>')
 vim.keymap.set('n', '<leader>2', ':BufferLineGoToBuffer 2<CR>')
 vim.keymap.set('n', '<leader>3', ':BufferLineGoToBuffer 3<CR>')
