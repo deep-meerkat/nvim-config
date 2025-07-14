@@ -34,6 +34,9 @@ vim.keymap.set('n', '<leader>7', ':BufferLineGoToBuffer 7<CR>')
 vim.keymap.set('n', '<leader>8', ':BufferLineGoToBuffer 8<CR>')
 vim.keymap.set('n', '<leader>9', ':BufferLineGoToBuffer 9<CR>')
 vim.keymap.set('n', '<leader>0', ':BufferLineGoToBuffer -1<CR>')
+vim.keymap.set('n', '<leader>w', ':bdelete<CR>')
+vim.keymap.set('n', '<leader><Tab>', ':bnext<CR>')
+vim.keymap.set('n', '<leader><S-Tab>', ':bprevious<CR>')
 
 -- Trouble
 local trouble = require('trouble')

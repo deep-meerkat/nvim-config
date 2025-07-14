@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 --vim.keymap.set('n', '<S-CR>', 'O<Esc>j')
 
 -- Выходит из файла в Netrw (explorer от Neovim)
-vim.keymap.set('n', '<leader><Esc>', ':Ex<CR>')
+vim.keymap.set('n', '<leader>vv', ':Ex<CR>')
 -- Отключает подсветку поиска
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 

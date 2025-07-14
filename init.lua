@@ -14,4 +14,3 @@ require("config.telescope")
 require("config.bufferline")
 require("config.hop")
 require("config.trouble")
-
