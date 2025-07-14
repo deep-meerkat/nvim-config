@@ -11,18 +11,18 @@ vim.g.did_load_filetypes = 1
 -- 1 - автоматическое форматирование при вставке
 vim.g.formatoptions = "qrn1"
 -- Отключает отображения режима ввода внизу экрана
-vim.opt.showmode = false
+--vim.opt.showmode = false
 -- Интервал обновления экрана в миллисекундах
 vim.opt.updatetime = 50
 -- Макс. интвервал, в течение которого можно нажать комбинацию клавиш <leader>+...
-vim.opt.timeoutlen = 300
+--vim.opt.timeoutlen = 300
 -- Всегда показывает колонку для отображения значков слева
 vim.wo.signcolumn = "yes"
 -- Устанавливает минимальное количество строк
 -- которое должно оставаться видимым сверху и снизу при прокрутке
 vim.opt.scrolloff = 6
 -- Отключает автоматический перенос длинных строк
-vim.opt.wrap = false
+vim.opt.wrap = true
 -- Включает перенос длинных строк на границах слов
 -- чтобы они не выходили за пределы окна
 vim.wo.linebreak = true
@@ -49,7 +49,7 @@ vim.opt.splitright = true
 
 -- Clipboard
 -- Позволяет использовать системный буфер обмена
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 
 -- Shorter messages
 -- Сокращает некоторые сообщения Neovim на экране
@@ -59,11 +59,11 @@ vim.opt.shortmess:append("c")
 -- Пробелы вместо табуляции
 vim.opt.expandtab = true
 -- Ширина отступа при автоматическом отступе
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
 -- Ширина табуляции
-vim.opt.tabstop = 4
+vim.opt.tabstop = 2
 -- Кол-во пробелов при нажатии на Tab
-vim.opt.softtabstop = 4
+vim.opt.softtabstop = 2
 -- Умный отступ пытается определить правильный уровень отступа
 -- на основе синтаксиса в коде
 vim.opt.smartindent = true
@@ -71,21 +71,23 @@ vim.opt.smartindent = true
 -- Fillchars
 -- Символы для заполнения элементов интерфейса
 vim.opt.fillchars = {
-    -- Линия для разделения окон
-    vert = "│",
-    -- Символ для обозначения свертного блока кода
-    fold = "⠀",
-    -- Символ в конце буфера, если нет в строке других символов
-    eob = " ", -- suppress ~ at EndOfBuffer
-    -- diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
-    -- Символ разделения сообщений в командной строке
-    msgsep = "‾",
-    -- Символы для открытых свернутых и закрытых блоков кода соответственно
-    foldopen = "▾",
-    foldsep = "│",
-    foldclose = "▸"
+  -- Линия для разделения окон
+  vert = "│",
+  -- Символ для обозначения свертного блока кода
+  fold = "⠀",
+  -- Символ в конце буфера, если нет в строке других символов
+  eob = " ", -- suppress ~ at EndOfBuffer
+  -- diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
+  -- Символ разделения сообщений в командной строке
+  msgsep = "‾",
+  -- Символы для открытых свернутых и закрытых блоков кода соответственно
+  foldopen = "▾",
+  foldsep = "│",
+  foldclose = "▸"
 }
 
+-- Малый курсор при режиме Insert
+vim.opt.guicursor = ""
 -- Включает поддержку 24-битных цветов
 vim.opt.termguicolors = true
 -- Подсвечивает текущую строку
@@ -99,8 +101,14 @@ vim.opt.showmatch = true
 -- Включает меню автодополнения в командной строке
 vim.opt.wildmenu = true
 
+-- выделяет 80-й столбец (линия справа), 
+-- что помогает контролировать длину строки
+vim.opt.colorcolumn = "80"
+
 -- Подсвечивает все совпадения при поиске
 vim.opt.hlsearch = true
+-- Динамически обновляет выделенные совподения
+vim.opt.incsearch = true
 -- Отключает подсветку при поиске на Esc
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Игнорирует регистр при поиске
@@ -113,7 +121,7 @@ vim.cmd([[highlight clear LineNr]])
 vim.cmd([[highlight clear SignColumn]])
 
 -- Установка шрифтов
--- vim.opt.guifont = "Hasklug Nerd Font Propo:h18"
+vim.opt.guifont = "Hasklug Nerd Font Propo:h18"
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -123,11 +131,11 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 
 -- Подсветка при копировании
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking text",
-    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+  desc = "Highlight when yanking text",
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 

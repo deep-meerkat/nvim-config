@@ -1,6 +1,8 @@
 local cmp = require'cmp'
 
   cmp.setup({
+
+    -- Здесь указываем движок для сниппетов
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -11,10 +13,14 @@ local cmp = require'cmp'
         -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
       end,
     },
+
+    -- Внешний вид высплывающих автодополнений и документации.
     window = {
        completion = cmp.config.window.bordered(),
        documentation = cmp.config.window.bordered(),
     },
+
+    -- Hotkeys для навигации по автодополнению
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -36,14 +42,19 @@ local cmp = require'cmp'
           end
       end, {"i", "s"})
   }),
+
+  -- Источники автодополнения
     sources = cmp.config.sources({
+      -- Использует возможности LSP
       { name = 'nvim_lsp' },
+      -- Источник для сниппетов
       { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     },
     {
+      -- Предоставляет предложения на основе буфера
       { name = 'buffer' },
     })
   })
@@ -59,6 +70,7 @@ local cmp = require'cmp'
  })
  require("cmp_git").setup() ]]-- 
 
+ -- Настройки для автодополнения в комадной строке при поиске [/,?,:]
   -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
@@ -78,11 +90,29 @@ local cmp = require'cmp'
     matching = { disallow_symbol_nonprefix_matching = false }
   })
 
+  -- Получает возводжно для LSP-клиента, которые затем передаются в lspconfig.
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['hls'].setup {
+  require('lspconfig')['volar'].setup {
     capabilities = capabilities,
-    filetypes = { 'haskell', 'lhaskell', 'cabal' },
---    virtual_text = true,
   }
+
+  require('lspconfig')['cssls'].setup {
+    capabilities = capabilities,
+  }
+
+  require('lspconfig')['html'].setup {
+    capabilities = capabilities,
+  }
+
+  require('lspconfig')['qmlls'].setup {
+    capabilities = capabilities,
+  }
+
+--  require('lspconfig')['rust-analyzer'].setup {
+--    capabilities = capabilities,
+--  }
+
+

@@ -1,15 +1,17 @@
 require("config.lazy")
-require("config.keymap")
+require("config.keymaps")
 require("config.options")
 
 -- Plugins config
 require("config.lsp")
 require("config.mason")
 require("config.cmp")
-require("config.kanagawa")
+require("config.rose_pine")
+-- require("config.nightfox")
+-- require("config.kanagawa")
 require("config.treesitter")
 require("config.telescope")
 require("config.bufferline")
 require("config.hop")
+require("config.trouble")
 
--- vim.opt.guifont = "Hasklug Nerd Font Propo:h18"
