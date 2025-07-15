@@ -1,3 +1,7 @@
+-- Should be set before Plugins
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 require("config.lazy")
 require("config.keymaps")
 require("config.options")
@@ -7,10 +11,11 @@ require("config.lsp")
 require("config.mason")
 require("config.cmp")
 require("config.rose_pine")
--- require("config.nightfox")
--- require("config.kanagawa")
 require("config.treesitter")
 require("config.telescope")
-require("config.bufferline")
 require("config.hop")
 require("config.trouble")
+
+--require("config.bufferline")
+-- require("config.nightfox")
+-- require("config.kanagawa")

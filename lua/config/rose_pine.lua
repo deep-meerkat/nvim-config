@@ -58,6 +58,7 @@ require("rose-pine").setup({
 	-- NOTE: Highlight groups are extended (merged) by default. Disable this
 	-- per group via `inherit = false`
     highlight_groups = {
+        CmpGhostText = { fg = "#555555", italic=true },
         -- Comment = { fg = "foam" },
         -- StatusLine = { fg = "love", bg = "love", blend = 15 },
         -- VertSplit = { fg = "muted", bg = "muted" },

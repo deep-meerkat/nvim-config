@@ -6,7 +6,9 @@ return {
   },
 
   -- Language Server
-  { 'neovim/nvim-lspconfig' },
+  {
+    'neovim/nvim-lspconfig',
+    version='*', },
 
   --Vsnip
   --  { 'hrsh7th/cmp-vsnip' },
@@ -63,5 +65,18 @@ return {
     config = true
     -- use opts = {} for passing setup options
     -- this is equivalent to setup({}) function
+  },
+
+  -- Codeium
+  {
+    "Exafunction/windsurf.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup({
+      })
+    end
   },
 }

@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- Вставка пустой строки без Insert Mode
 --vim.keymap.set('n', '<CR>', 'o<Esc>k')
 --vim.keymap.set('n', '<S-CR>', 'O<Esc>j')
