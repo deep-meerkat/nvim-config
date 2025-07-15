@@ -7,7 +7,7 @@ require("config.keymaps")
 require("config.options")
 
 -- Plugins config
-require("config.lsp")
+require("lsp")
 require("config.mason")
 require("config.cmp")
 require("config.rose_pine")
