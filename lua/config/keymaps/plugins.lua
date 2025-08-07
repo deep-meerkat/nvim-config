@@ -23,21 +23,6 @@ vim.keymap.set('n', '<leader>fr', builtin.resume,       { desc = '[F]ind [R]esum
 vim.keymap.set('n', '<leader>fk', builtin.keymaps,      { desc = '[F]ind [K]eymaps' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags,    { desc = '[F]ind [R]esume' })
 
--- BufferLine
-vim.keymap.set('n', '<leader>1', ':BufferLineGoToBuffer 1<CR>')
-vim.keymap.set('n', '<leader>2', ':BufferLineGoToBuffer 2<CR>')
-vim.keymap.set('n', '<leader>3', ':BufferLineGoToBuffer 3<CR>')
-vim.keymap.set('n', '<leader>4', ':BufferLineGoToBuffer 4<CR>')
-vim.keymap.set('n', '<leader>5', ':BufferLineGoToBuffer 5<CR>')
-vim.keymap.set('n', '<leader>6', ':BufferLineGoToBuffer 6<CR>')
-vim.keymap.set('n', '<leader>7', ':BufferLineGoToBuffer 7<CR>')
-vim.keymap.set('n', '<leader>8', ':BufferLineGoToBuffer 8<CR>')
-vim.keymap.set('n', '<leader>9', ':BufferLineGoToBuffer 9<CR>')
-vim.keymap.set('n', '<leader>0', ':BufferLineGoToBuffer -1<CR>')
-vim.keymap.set('n', '<leader>w', ':bdelete<CR>')
-vim.keymap.set('n', '<leader><Tab>', ':bnext<CR>')
-vim.keymap.set('n', '<leader><S-Tab>', ':bprevious<CR>')
-
 -- Trouble
 local trouble = require('trouble')
 vim.keymap.set('n', '<leader>xx', ':Trouble diagnostics toggle<CR>', {desc = "Diagnostics (Trouble)"})
@@ -46,3 +31,10 @@ vim.keymap.set('n', '<leader>cs', ':Trouble symbols toggle focus=false<CR>', {de
 vim.keymap.set('n', '<leader>cl', ':Trouble lsp toggle focus=false win.position=right<CR>', {desc = "LSP Definitions / references / ... (Trouble)"})
 vim.keymap.set('n', '<leader>xL', ':Trouble loclist toggle<CR>', {desc = "Location List (Trouble)"})
 vim.keymap.set('n', '<leader>xQ', ':Trouble qflist toggle<CR>', {desc = "Quickfix List (Trouble)"})
+
+-- LSP
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover Documentation" })               -- Подсказка
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to Definition" })            -- Определение
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to Implementation" })    -- Реализация
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Find References" })             -- Где используется
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })           -- Переименование

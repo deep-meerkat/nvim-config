@@ -10,6 +10,13 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 -- Открывает буфер
 vim.keymap.set('n', '<leader>"', ":reg<CR>")
 
+-- Сменить директорию на текущую
+vim.keymap.set('n', '<leader>cd', function ()
+  vim.cmd("silent cd %:p:h")
+  local new_dir = vim.fn.getcwd()
+  vim.notify(new_dir, vim.log.levels.INFO)
+end, { noremap = true, desc = "Move to cwd" })
+
 -- Перемещает строки
 vim.keymap.set('v', 'J', ':m \'>+1<CR>gv=gv')
 vim.keymap.set('v', 'K', ':m \'<-2<CR>gv=gv')

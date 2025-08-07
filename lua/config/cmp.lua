@@ -26,10 +26,10 @@ cmp.setup({
     priority_weight = 2,
     -- отключи сравнители, которые не используешь, для скорости
     comparators = {
-      -- cmp.config.compare.offset, -- предпочитает слова ближе к курсору
+      cmp.config.compare.offset, -- предпочитает слова ближе к курсору
+      cmp.config.compare.recently_used, -- недавно использованные
       cmp.config.compare.exact, -- полные совпадения ставятся выше
       cmp.config.compare.score, -- общий рейтинг совпадения fuzzy match
-      cmp.config.compare.recently_used, -- недавно использованные
       cmp.config.compare.locality, -- учитывается местоположение в буфере
       --cmp.config.compare.kind, -- сортирует по типу
       --cmp.config.compare.sort_text, -- сортировка по тексту (для LSP)
@@ -40,11 +40,11 @@ cmp.setup({
 
   performance = {
     -- 50-100 - быстрая реакция, без лагов
-    debounce = 60, -- миллисекунды задержки запроса
+    debounce = 100, -- миллисекунды задержки запроса
     -- 20-50
-    throttle = 30, -- ограничение скорости запросов
+    throttle = 50, -- ограничение скорости запросов
     -- 200-300
-    fetching_timeout = 200, -- таймаут ожидания LSP
+    fetching_timeout = 300, -- таймаут ожидания LSP
   },
 
   -- Snippet engine
@@ -91,7 +91,7 @@ cmp.setup({
   -- Источники автодополнения
   sources = cmp.config.sources({
     -- Важен приоритет
-    { name = 'codeium' },
+    { name = 'codeium', keyword_length = 4 },
     { name = 'nvim_lsp' },
     { name = 'buffer' },
   }),

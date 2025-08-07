@@ -147,6 +147,11 @@ vim.lsp.config('vue_ls', vue_ls_config)
 --   }
 -- })
 
+--qmlls
+vim.lsp.config('qmlls', {
+  root_markers = { '.qmlls.ini', 'shell.qml' }
+})
+
 --------------------
 ---enable/disable---
 --------------------
@@ -161,4 +166,5 @@ vim.lsp.enable({'vtsls', 'vue_ls'})
 vim.lsp.enable('marksman')
 vim.lsp.enable('basedpyright')
 vim.lsp.enable('ruff', false)
-
+vim.lsp.enable('jsonls')
+vim.lsp.enable('gopls')
